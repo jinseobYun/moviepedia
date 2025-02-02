@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>영화정보 웹사이트</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: black;
+        overflow: hidden;
+      }
+
+      .logo-container {
+        position: relative;
+      }
+
+      .logo-container img {
+        position: absolute;
+      }
+
+      .netflix-logo {
+        top: 10%;
+        left: 10%;
+        max-width: 100px;
+        transform: rotate(30deg); /* 회전 각도 설정 */
+      }
+
+      .wavve-logo {
+        top: 30%;
+        left: 50%;
+        max-width: 100px;
+        transform: rotate(60deg); /* 회전 각도 설정 */
+      }
+
+      .watcha-logo {
+        top: 50%;
+        left: 30%;
+        max-width: 100px;
+        transform: rotate(-45deg); /* 회전 각도 설정 */
+      }
+
+      .disney-plus-logo {
+        top: 70%;
+        left: 70%;
+        max-width: 100px;
+        transform: rotate(-15deg); /* 회전 각도 설정 */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="logo-container">
+      <img
+        class="netflix-logo"
+        src="https://w7.pngwing.com/pngs/393/55/png-transparent-netflix-logo-thumbnail.png"
+        alt="Netflix 로고"
+      />
+      <img
+        class="wavve-logo"
+        src="https://play-lh.googleusercontent.com/7cuI7bdCeZbmc9anRXqpmxZPH92t5NEEbhTnj5by6skhZK_dlUg9kx--gqtLf-8c2K12"
+        alt="Wavve 로고"
+      />
+      <img
+        class="watcha-logo"
+        src="https://images.squarespace-cdn.com/content/v1/5fdcd66b0383b32fb0f59e0e/1618422438283-2K5DIKAXSFMUWGVPRNKX/logo.jpg"
+        alt="Watcha 로고"
+      />
+      <img
+        class="disney-plus-logo"
+        src="https://www.theguru.co.kr/data/photos/20201252/art_16085131109894_aa973a.png"
+        alt="Disney Plus 로고"
+      />
+      <img
+        class="netflix-logo"
+        src="https://w7.pngwing.com/pngs/393/55/png-transparent-netflix-logo-thumbnail.png"
+        alt="Netflix 로고"
+      />
+      <img
+        class="wavve-logo"
+        src="https://play-lh.googleusercontent.com/7cuI7bdCeZbmc9anRXqpmxZPH92t5NEEbhTnj5by6skhZK_dlUg9kx--gqtLf-8c2K12"
+        alt="Wavve 로고"
+      />
+      <img
+        class="watcha-logo"
+        src="https://images.squarespace-cdn.com/content/v1/5fdcd66b0383b32fb0f59e0e/1618422438283-2K5DIKAXSFMUWGVPRNKX/logo.jpg"
+        alt="Watcha 로고"
+      />
+      <img
+        class="disney-plus-logo"
+        src="https://www.theguru.co.kr/data/photos/20201252/art_16085131109894_aa973a.png"
+        alt="Disney Plus 로고"
+      />
+    </div>
+
+    <!-- <script>
+      // 이미지를 무작위로 배치하고 회전시키는 함수
+      function randomizeImage(imageElement) {
+        const maxX = window.innerWidth - imageElement.clientWidth;
+        const maxY = window.innerHeight - imageElement.clientHeight;
+        const randomX = Math.floor(Math.random() * maxX);
+        const randomY = Math.floor(Math.random() * maxY);
+        const randomRotation = Math.floor(Math.random() * 360); // 무작위 회전 각도 (0~359도)
+
+        imageElement.style.left = `${randomX}px`;
+        imageElement.style.top = `${randomY}px`;
+        imageElement.style.transform = `rotate(${randomRotation}deg)`;
+      }
+
+      // 각 로고 이미지에 대해 위치와 회전 설정
+      const netflixLogo = document.querySelector(".netflix-logo");
+      const wavveLogo = document.querySelector(".wavve-logo");
+      const watchaLogo = document.querySelector(".watcha-logo");
+      const disneyPlusLogo = document.querySelector(".disney-plus-logo");
+
+      randomizeImage(netflixLogo);
+      randomizeImage(wavveLogo);
+      randomizeImage(watchaLogo);
+      randomizeImage(disneyPlusLogo);
+    </script> -->
+  </body>
+</html>

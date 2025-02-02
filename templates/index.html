@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MOVIE PEDIA</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
+    </style>
+    <script
+      src="https://kit.fontawesome.com/678ead013d.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h1 class="header"><i class="fa-solid fa-film fa-beat"></i> Movie Pedia</h1>
+    <div class="container">
+      <form class="form" method="POST" action="{{ url_for('search')}}">
+        <div class="">
+          <p class="btn-switch">
+            <input
+              type="radio"
+              id="yes"
+              class="btn-switch__radio btn-switch__radio_yes"
+              name="search_type"
+              value="movie"
+            />
+            <label for="yes" class="btn-switch__label btn-switch__label_yes"
+              ><span class="btn-switch__txt">영화</span></label
+            >
+
+            <input
+              type="radio"
+              id="no"
+              class="btn-switch__radio btn-switch__radio_no"
+              name="search_type"
+              value="tv"
+              checked
+            />
+            <label for="no" class="btn-switch__label btn-switch__label_no"
+              ><span class="btn-switch__txt">드라마</span></label
+            >
+          </p>
+        </div>
+
+        <br />
+        <input
+          class="search"
+          type="text"
+          name="search_query"
+          placeholder="찾으시는 영화 혹은 드라마의 제목을 입력해보세요!"
+        />
+
+        <button type="submit" class="btn">
+          <i class="fa-solid fa-magnifying-glass btn-i fa-3x"></i>
+        </button>
+      </form>
+    </div>
+    <div class="footer">
+      <img
+        src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"
+      />
+      <span style="color: #fff; font-size: 10px"
+        >This product uses the TMDB API but is not endorsed or certified by
+        TMDB.</span
+      >
+      <!-- <img
+        class="netflix-logo"
+        src="https://blog.kakaocdn.net/dn/c4jzIT/btrghQIPMkh/sByblE0p50HHtMiEDdn8k1/img.png"
+        alt="Netflix 로고"
+      />
+      <img
+        class="wavve-logo"
+        src="https://blog.kakaocdn.net/dn/calTdj/btra8ASqAGV/q9JtlnNd8Ggm6EqGjCRcJ1/img.jpg"
+        alt="Wavve 로고"
+      />
+      <img
+        class="watcha-logo"
+        src="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F273C31375769736D07"
+        alt="Watcha 로고"
+      />
+      <img
+        class="disney-plus-logo"
+        src="static\svg\disney.png"
+        alt="Disney Plus 로고"
+      />
+      <img
+        class="netflix-logo2"
+        src="https://blog.kakaocdn.net/dn/dHUQjk/btrgimAuQff/hGsODOLSUu1S8HfQXoSsT0/img.png"
+        alt="Netflix 로고"
+      />
+      <img
+        class="wavve-logo2"
+        src="https://img.wavve.com/service30/profile/wavve2022.png"
+        alt="Wavve 로고"
+      />
+      <img
+        class="watcha-logo2"
+        src="https://images.squarespace-cdn.com/content/v1/5fdcd66b0383b32fb0f59e0e/1618422438283-2K5DIKAXSFMUWGVPRNKX/logo.jpg"
+        alt="Watcha 로고"
+      />
+      <img
+        class="disney-plus-logo2"
+        src="static\svg\disney.png"
+        alt="Disney Plus 로고"
+      />
+      <img
+        class="series-on-logo"
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUEAAACdCAMAAAAdWzrjAAAAflBMVEUAAAD///8rKyuWlpbw8PCfn5+3t7f39/fOzs7f39/BwcE7OzuJiYkzMzPz8/NFRUWlpaUlJSV1dXXX19dra2u9vb2Ojo58fHwXFxeYmJjq6urj4+NNTU2vr69lZWVSUlKCgoI6OjpdXV0dHR0PDw9mZmbIyMgvLy9CQkJwcHCoD9rEAAAE0klEQVR4nO3ZiXaqOhgF4AAyiDIjKIIgWsT3f8GbMDkFhbaW9tz9rXWWSoWc7KbkTyAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA+Y72LneMUDR+dVJyi3W/maELFjLZeoSRyEH7Eb2tsbeXnbGMrhTePzKrZyH1bYz9EFDhU1q2dYm+CzPXzPLUWxmn0MD06p30Zp/mHmwU0NIceWvEa27yhVz/J43VKEHxCNg+5qmpEiE0H69zTCl1fKYktb5YfTbSKzhSaS0TTpN+9O3tByJzf1vuG/E8o+Z0SaFQSb3DSoB6Pant2KbP5ZPPH9YJkPW0pU4fwJX29EpwRCQrCB73UrHkv9yVY9DQ1nzqEL1n2JWiMSlAQBySo/eMJmrd3rpEJJmMTvGqtS/C4j3P/7Lru2d+lpTNlLsN1CdLZ93hwnPB5gkJfgtHLBMsuQVs8OYcj2d8muFjN7s5QvXDidIboEvTrz9ZjgvNgI8t2kigrOtX2JajyElQlSQqy0KUjKi6PXYJZ3dThKn1CfO5l9WlSGaNLcFd/doIgkDY0sMtMsro9o03QTWmhmLbncxM0b89sE2xHVh7HZbk3Tgf6fs0NUBCW7w7gy7oEvcyPb+88bYJ346BNsKw/zp4muF7TO4Mongy2emsT9NzcEte3Vw2qn8zkTI6qrwRLvTqyfV/Xv8ndXGxGnp7I2Y71r7sPqqyWNk1zprLR0ya4ry+gPknwCvs13M3FzTKyHmXVakVr3wbsNa++NUEm4/RVM2duRZ2RS4KrhGlTeZUguxX0VDOzQ/sz+soWOGozOSfsmDFVMkP1Jai+TPDh+59NkFVC1eJSY1/xCCls+i9qJpfdpPEMkPf0SjiNS1AbkCD/zLqaYUvmgr3Q5HSaYCQ0CX5MGs8Q255ucevBjPTlcB6Q4OJJgmx80nEsyvSv1rxOcDFpOkMcdfN+F6U/QXbX5ybI5oCXMwmxlGLOaY0lWM28SfU/kukVqgQ/2LHpkhlFLNOdu5STVdGtCy4JanEax5ZllYuS3fN5CVb5cCrq1Pd99+yG4fLqduZYebhJdK+LkiUoV++8c3ymo1G3YlPYWWx7bTZNIF/QVbbGq4r6Sr2eeVlRGwtDPFzt014naHB+L/XFfjt3O69sm21OToJaTkdRli0DSZLlS4J6Yrf3UK86lTMGfX+X0wWd4VT1c7uZ29TiNwk2JfW9319QX6qZdqP4McEbNxX1vj1aVcCD92YWd03V5Z//OKep9gSJjNUlqNmJohda142Xu1sWPdtuj7P14OAEZ+wZgZJ0t4Nud8vys4CuyW1blqXMzQ/TxTLC53dYWYJdah7BDus9cVCC5/YH2f82wbSnV+bLJ01VgpdUxO5JU2+CDw//Gn9gE/CZ+43hxpLztJOpElTNWRTV84HhaVpR6HoRkMLz5tvtTA3IiZ8g4Zbuf2Dp+xx/ELIyzPWKlWLL0pLtMtOiZH+/p/fMWtxXD9tDWgXJtrIqPJEW7twl5Or11X63NGq7oprRXNMVWwrf9pAnDSVb0bV5dHnQ9Bcqlldye+On1mnECPsOByPOQzv8GyULAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPyg/wAW90PUcK4aNAAAAABJRU5ErkJggg=="
+        alt="Series-on 로고"
+      /> -->
+    </div>
+  </body>
+</html>

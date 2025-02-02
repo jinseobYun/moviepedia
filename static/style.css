@@ -1,0 +1,234 @@
+/* style.css */
+@font-face {
+  font-family: "Giants-Inline";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Inline.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "EF_watermelonSalad";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_watermelonSalad.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "EF_watermelonSalad";
+  text-align: center;
+  background-color: black;
+}
+
+h1 {
+  font-size: 24px;
+  margin: 20px 0;
+  color: #ee0000;
+  font-family: "Giants-Inline";
+}
+
+form {
+  margin: 20px 0;
+  font-family: "EF_watermelonSalad";
+}
+
+p {
+  font-size: 14px;
+}
+
+.header {
+  font-size: 120px;
+  margin-top: 40px;
+  height: 20vh;
+}
+.container {
+  height: 60vh;
+}
+.search {
+  width: 800px;
+  height: 50px;
+  border-radius: 50px;
+  text-align: center;
+  border-color: #848484;
+  color: #fff;
+  border: #848484;
+  background-color: #b8b7b7;
+}
+.btn {
+  border: none;
+  background-color: transparent;
+}
+.btn-i {
+  color: #848484;
+}
+html {
+  text-align: center;
+  font-family: Georgia, "Times New Roman", serif;
+}
+.btn-switch {
+  font-size: 20px;
+  position: relative;
+  display: inline-block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.btn-switch__radio {
+  display: none;
+}
+.btn-switch__label {
+  display: inline-block;
+  padding: 0.75em 0.5em 0.75em 0.75em;
+  vertical-align: top;
+  font-size: 15px;
+  font-weight: 100;
+  line-height: 1.5;
+  color: #ffffff;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+.btn-switch__label + .btn-switch__label {
+  padding-right: 0.75em;
+  padding-left: 0;
+}
+.btn-switch__txt {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  min-width: 1.5em;
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+}
+.btn-switch__radio_no:checked ~ .btn-switch__label_yes .btn-switch__txt,
+.btn-switch__radio_yes:checked ~ .btn-switch__label_no .btn-switch__txt {
+  opacity: 0;
+}
+.btn-switch__label:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #848f8c;
+  border-radius: 1.5em;
+  box-shadow: inset 0 0.0715em 0.3572em rgba(43, 43, 43, 0.05);
+  transition: background 0.2s ease-in-out;
+}
+.btn-switch__radio_yes:checked ~ .btn-switch__label:before {
+  background: #ee6e33;
+}
+.btn-switch__label_no:after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 0.5em;
+  bottom: 0.5em;
+  left: 0.8em;
+  width: 2em;
+  background: #fff;
+  border-radius: 1em;
+  pointer-events: none;
+  box-shadow: 0 0.1429em 0.2143em rgba(43, 43, 43, 0.2),
+    0 0.3572em 0.3572em rgba(43, 43, 43, 0.1);
+  transition: left 0.2s ease-in-out, background 0.2s ease-in-out;
+}
+.btn-switch__radio_yes:checked ~ .btn-switch__label_no:after {
+  left: calc(100% - 2.5em);
+  background: #fff;
+}
+.btn-switch__radio_no:checked ~ .btn-switch__label_yes:before,
+.btn-switch__radio_yes:checked ~ .btn-switch__label_no:before {
+  z-index: 1;
+}
+.btn-switch__radio_yes:checked ~ .btn-switch__label_yes {
+  color: #fff;
+}
+.footer {
+  height: 5vh;
+}
+img {
+  width: 30px;
+}
+/* .logo-container {
+
+} */
+/*
+.logo-container img {
+  position: absolute;
+  width: 160px;
+  z-index: 1; */ /* 이미지의 층위를 설정합니다. */
+/*
+  opacity: 0; */ /* 초기에 투명으로 설정합니다. */ /*
+  animation: fadeIn 3s ease-in-out forwards;*/ /* 애니메이션 설정 */
+/*}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.netflix-logo {
+  left: 30px;
+  top: 50px;
+  max-width: 100px;
+  transform: rotate(30deg); */ /* 회전 각도 설정 */
+/*}
+
+.wavve-logo {
+  left: 130px;
+  top: 150px;
+  max-width: 100px;
+  transform: rotate(60deg); */ /* 회전 각도 설정 */
+/*}
+
+.watcha-logo {
+  left: 1130px;
+  top: 60px;
+  max-width: 100px;
+  transform: rotate(-45deg);*/ /* 회전 각도 설정 */
+/*}
+
+.disney-plus-logo {
+  left: 1320px;
+  top: 10px;
+  transform: rotate(15deg); 
+}
+.netflix-logo2 {
+  left: 1330px;
+  bottom: 150px;
+  width: 100px;
+  transform: rotate(-30deg); 
+}
+
+.wavve-logo2 {
+  left: 1130px;
+  top: 150px;
+  max-width: 100px; 
+}
+
+.watcha-logo2 {
+  left: 30px;
+  bottom: 80px;
+  max-width: 100px;
+  transform: rotate(45deg); 
+}
+
+.disney-plus-logo2 {
+  left: 720px;
+  top: 150px;
+  transform: rotate(-15deg); 
+}
+
+.series-on-logo {
+  left: 400px;
+  top: 150px;
+  transform: rotate(15deg);
+}
+*/

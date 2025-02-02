@@ -1,0 +1,226 @@
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Giants-Inline";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Inline.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+.header {
+  font-size: 120px;
+  height: 20vh;
+}
+.container {
+  height: 80vh;
+}
+.footer {
+  margin-top: 50px;
+  height: 5vh;
+}
+
+.logo-img {
+  width: 30px;
+}
+body {
+  font-family: "Pretendard-Regular";
+  text-align: center;
+  background-color: black;
+  color: #ff5959;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  overflow-x: scroll;
+  white-space: nowrap; /* 수평 스크롤을 생성합니다. */
+}
+
+ul li {
+  display: inline-block;
+  width: 300px; /* 각 검색 결과 아이템의 너비를 조정합니다. */
+  margin: 0 10px; /* 검색 결과 아이템 사이의 간격을 조정합니다. */
+  text-align: left;
+}
+
+.poster-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border: 2px solid #fffdfd; /* 테두리 스타일과 색상을 여기서 조정합니다. */
+}
+
+p {
+  font-size: 14px;
+}
+
+.title {
+  font-size: 30px;
+  text-align: left;
+  color: #ee0000;
+}
+
+.search {
+  width: 800px;
+  height: 50px;
+  border-radius: 50px;
+  text-align: center;
+  background-color: rgb(206, 206, 206);
+}
+.buttn {
+  border: none;
+  background-color: transparent;
+  color: #a2a2a2;
+}
+
+html {
+  text-align: center;
+  font-family: Georgia, "Times New Roman", serif;
+}
+.btn-switch {
+  font-size: 10px;
+  position: relative;
+  display: inline-block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.btn-switch__radio {
+  display: none;
+}
+.btn-switch__label {
+  display: inline-block;
+  padding: 0.75em 0.5em 0.75em 0.75em;
+  vertical-align: center;
+  font-size: 10px;
+  font-weight: 100;
+  line-height: 3px;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+.btn-switch__label + .btn-switch__label {
+  padding-right: 0.75em;
+  padding-left: 0;
+}
+.btn-switch__txt {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  min-width: 1.5em;
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+}
+.btn-switch__radio_no:checked ~ .btn-switch__label_yes .btn-switch__txt,
+.btn-switch__radio_yes:checked ~ .btn-switch__label_no .btn-switch__txt {
+  opacity: 0;
+}
+.btn-switch__label:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #a2a2a2;
+  border-radius: 1.5em;
+  box-shadow: inset 0 0.0715em 0.3572em rgba(43, 43, 43, 0.05);
+  transition: background 0.2s ease-in-out;
+}
+.btn-switch__radio_yes:checked ~ .btn-switch__label:before {
+  background: #ee6e33;
+}
+.btn-switch__label_no:after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 0.5em;
+  bottom: 0.5em;
+  left: 1em;
+  width: 2em;
+  background: #fff;
+  border-radius: 1em;
+  pointer-events: none;
+  box-shadow: 0 0.1429em 0.2143em rgba(43, 43, 43, 0.2),
+    0 0.3572em 0.3572em rgba(43, 43, 43, 0.1);
+  transition: left 0.2s ease-in-out, background 0.2s ease-in-out;
+}
+.btn-switch__radio_yes:checked ~ .btn-switch__label_no:after {
+  left: calc(100% - 2.5em);
+  background: #fff;
+}
+.btn-switch__radio_no:checked ~ .btn-switch__label_yes:before,
+.btn-switch__radio_yes:checked ~ .btn-switch__label_no:before {
+  z-index: 1;
+}
+.btn-switch__radio_yes:checked ~ .btn-switch__label_yes {
+  color: #fff;
+}
+.logo {
+  font-family: "Giants-Inline";
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: bold;
+  margin-right: auto; /* 로고를 왼쪽 가운데로 배치 */
+}
+a {
+  text-decoration: none; /* 링크 텍스트 밑줄 제거 */
+  color: inherit; /* 링크 색상을 상위 요소의 색으로 상속 */
+  cursor: pointer; /* 포인터 커서 표시 */
+}
+
+/* 클릭한 후에도 링크 색상이 변하지 않도록 스타일 지정 */
+a:visited {
+  color: inherit; /* 방문한 링크의 색상을 상위 요소의 색으로 상속 */
+}
+/* 스크롤 바 전체 영역에 스타일 적용 */
+::-webkit-scrollbar {
+  width: 12px; /* 스크롤 바의 너비 */
+}
+
+/* 스크롤 바의 트랙(빈 공간)에 스타일 적용 */
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* 트랙의 배경색 */
+}
+
+/* 스크롤 바의 색상 */
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* 스크롤 바의 색상 */
+  border-radius: 6px; /* 스크롤 바의 둥근 모서리 설정 */
+}
+
+/* 마우스 오버 시 스크롤 바의 색상 */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* 스크롤 바의 색상 변경 */
+}
+#sort_by {
+  font-size: 16px; /* 폰트 크기 설정 */
+  padding: 5px 10px; /* 패딩 설정 */
+  border: 1px solid #7f7f7f; /* 테두리 스타일 및 색상 설정 */
+  border-radius: 5px; /* 둥근 테두리 설정 */
+  background-color: #8f8d8d; /* 배경색 설정 */
+  color: #333; /* 텍스트 색상 설정 */
+}
+
+/* 드롭다운 메뉴의 옵션 스타일 */
+#sort_by option {
+  font-size: 16px; /* 옵션 폰트 크기 설정 */
+  background-color: #959595; /* 옵션 배경색 설정 */
+  color: #333; /* 옵션 텍스트 색상 설정 */
+}
+
+/* 드롭다운 메뉴가 선택되었을 때 스타일 */
+#sort_by:focus {
+  outline: none; /* 포커스 스타일 제거 */
+  border-color: #f33c39; /* 포커스 시 테두리 색상 변경 */
+  box-shadow: 0 0 5px rgba(231, 231, 231, 0.5); /* 포커스 시 그림자 효과 추가 */
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>상세 정보</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='detail.css') }}"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h2 class="header"><a class="logo" href="/">Movie Pedia</a></h2>
+    <!-- 예고편 또는 티저 동영상 -->
+    <div class="video-container">
+      {% if video_key %}
+      <iframe
+        width="100%"
+        height="500"
+        src="https://www.youtube.com/embed/{{ video_key }}"
+      ></iframe>
+      {% endif %}
+    </div>
+
+    <!-- 영화 포스터와 정보 -->
+    <div class="movie-info">
+      <img
+        class="img"
+        src="https://image.tmdb.org/t/p/w500{{ media_detail.poster_path }}"
+        alt="포스터 이미지"
+      />
+      <!-- 바로보기 OTT 플랫폼 연결 링크 -->
+      <div class="platforms">
+        <ul>
+          {% for platform in providers %}
+          <li class="platform">
+            {{ platform.type }}: {% for provider in platform.providers %} {% if
+            provider.provider_name == 'wavve' %}
+            <a href="https://www.wavve.com/" target="_blank"
+              ><img
+                class="logo-img"
+                src="https://image.tmdb.org/t/p/original{{ provider.logo_path }}"
+                alt="플랫폼 로고"
+            /></a>
+
+            {% elif provider.provider_name == 'Netflix' %}
+            <a href="https://www.netflix.com/kr/" target="_blank"
+              ><img
+                class="logo-img"
+                src="https://image.tmdb.org/t/p/original{{ provider.logo_path }}"
+                alt="플랫폼 로고"
+            /></a>
+
+            {% elif provider.provider_name == 'Watcha' %}
+            <a href="https://watcha.com/" target="_blank"
+              ><img
+                class="logo-img"
+                src="https://image.tmdb.org/t/p/original{{ provider.logo_path }}"
+                alt="플랫폼 로고"
+            /></a>
+
+            {% elif provider.provider_name == 'Naver Store' %}
+            <a href="https://serieson.naver.com/v3/movie" target="_blank"
+              ><img
+                class="logo-img"
+                src="https://image.tmdb.org/t/p/original{{ provider.logo_path }}"
+                alt="플랫폼 로고"
+            /></a>
+
+            {% elif provider.provider_name == 'Google Play Movies' %}
+            <a
+              href="https://play.google.com/store/movies?hl=ko&gl=US&pli=1"
+              target="_blank"
+              ><img
+                class="logo-img"
+                src="https://image.tmdb.org/t/p/original{{ provider.logo_path }}"
+                alt="플랫폼 로고"
+            /></a>
+
+            {% elif provider.provider_name == 'Netflix basic with Ads' %}
+            <a
+              href="https://about.netflix.com/ko/news/announcing-basic-with-ads-ko"
+              target="_blank"
+              ><img
+                class="logo-img"
+                src="https://image.tmdb.org/t/p/original{{ provider.logo_path }}"
+                alt="플랫폼 로고"
+            /></a>
+
+            {% elif provider.provider_name == 'Disney Plus' %}
+            <a href="https://www.disneyplus.com/" target="_blank"
+              ><img
+                class="logo-img"
+                src="https://image.tmdb.org/t/p/original{{ provider.logo_path }}"
+                alt="플랫폼 로고"
+            /></a>
+
+            {% endif %} {% endfor %}
+          </li>
+          {% endfor %}
+        </ul>
+        <div class="details">
+          <table>
+            <tr>
+              <th>제목</th>
+              <td>
+                {% if genre == 'movie' %} {{ media_detail.title }} {% elif genre
+                == 'tv' %} {{ media_detail.name }} {% endif %}
+              </td>
+            </tr>
+            <tr>
+              <th>장르</th>
+              <td>
+                {% for genre_detail in media_detail.genres %} {{
+                genre_detail['name'] }} {% endfor %}
+              </td>
+            </tr>
+            <tr>
+              <th>개봉일</th>
+              <td>
+                {% if genre == 'movie' %}{{ media_detail.release_date }} {% else
+                %}{{ media_detail.first_air_date }} {% endif %}
+              </td>
+            </tr>
+            <tr>
+              <th>평점</th>
+              <td>{{ media_detail.vote_average }}</td>
+            </tr>
+            {% if genre == 'movie' %}
+            <tr>
+              <th>영화 관객수</th>
+              <td>{{ media_detail.popularity }}</td>
+            </tr>
+            {% elif genre == 'tv' %}
+            <tr>
+              <th>드라마 정보</th>
+              <td>
+                <p>시즌 수: {{ media_detail.number_of_seasons }}</p>
+                <p>총 회차: {{ media_detail.number_of_episodes }}</p>
+              </td>
+            </tr>
+            <tr>
+              <th>국가</th>
+              <td>{{ media_detail.origin_country[0] }}</td>
+            </tr>
+            {% endif %}
+
+            <tr>
+              <th>줄거리</th>
+              <td>{{ media_detail.overview }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <img
+        class="logo-img2"
+        src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"
+      />
+      <span style="color: #fff; font-size: 10px"
+        >This product uses the TMDB API but is not endorsed or certified by
+        TMDB.</span
+      >
+    </div>
+  </body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MOVIE PEDIA</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='search.css') }}"
+    />
+    <script
+      src="https://kit.fontawesome.com/678ead013d.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+
+      <div class="header">
+        <form class="form" method="POST" action="{{ url_for('search')}}">
+          <span class="title"><a class="logo" href="/">Movie Pedia</a></span>
+          <p class="btn-switch">
+            <input
+              type="radio"
+              id="yes"
+              class="btn-switch__radio btn-switch__radio_yes"
+              name="search_type"
+              value="movie"
+            />
+
+            <input
+              type="radio"
+              id="no"
+              class="btn-switch__radio btn-switch__radio_no"
+              name="search_type"
+              value="tv"
+              checked
+            />
+            <label for="yes" class="btn-switch__label btn-switch__label_yes"
+              ><span class="btn-switch__txt">영화</span></label
+            >
+
+            <label for="no" class="btn-switch__label btn-switch__label_no"
+              ><span class="btn-switch__txt">TV</span></label
+            >
+          </p>
+          <input
+            class="search"
+            type="text"
+            name="search_query"
+            placeholder="찾으시는 영화 혹은 드라마의 제목을 입력해보세요!"
+          />
+
+          <button type="submit" class="buttn">
+            <i class="fa-solid fa-magnifying-glass btn-i fa-3x"></i>
+          </button>
+        </form>
+      </div>
+      <hr />
+
+      <div class="container">
+        <select id="sort_by" name="sort_by">
+          <option value="release_date">최신순</option>
+          <option value="vote_average">평점순</option>
+        </select>
+        {% if media_data %}
+
+        <ul id="search_results">
+          {% for item in media_data %}
+          <li>
+            {% if search_type == 'movie' %}
+            <h3>{{ item.title }}</h3>
+            {% elif search_type == 'tv' %}
+            <h3>{{ item.name }}</h3>
+            {% endif %}
+            <p>
+              {% if search_type == 'movie' %} 개봉일: {{ item.release_date }} {%
+              else %} 개봉일: {{ item.first_air_date }} {% endif %}
+            </p>
+            <p>
+              {{ '평점:' if search_type == 'movie' else '평점:' }} {{
+              item.vote_average }}
+            </p>
+
+            <a
+              href="{{ url_for('detail', media_id=item.id, genre=search_type)}}"
+              ><img class="poster-img"
+                src="https://image.tmdb.org/t/p/w500{{ item.poster_path }}"
+                alt="포스터 이미지"
+            /></a>
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <h2>찾으시는 정보가 존재하지 않습니다.</h2>
+        {% endif %}
+      </div>
+      <div class="footer">
+        <img class="logo-img"
+          src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"
+        />
+        <span style="color: #fff; font-size:10px"
+          >This product uses the TMDB API but is not endorsed or certified by
+          TMDB.</span>
+   
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      // 드롭다운 메뉴에서 정렬 기준이 변경될 때 호출되는 함수
+      $("#sort_by").change(function () {
+        const sortOption = $(this).val();
+
+        // 정렬 기준에 따라 검색 결과를 정렬
+        if (sortOption === "release_date") {
+          $("#search_results li")
+            .sort(function (a, b) {
+              const dateA = new Date(
+                $(a)
+                  .find('p:contains("개봉일:")')
+                  .text()
+                  .replace("개봉일:", "")
+                  .trim()
+              );
+              const dateB = new Date(
+                $(b)
+                  .find('p:contains("개봉일:")')
+                  .text()
+                  .replace("개봉일:", "")
+                  .trim()
+              );
+              return dateB - dateA;
+            })
+            .appendTo("#search_results");
+        } else if (sortOption === "vote_average") {
+          $("#search_results li")
+            .sort(function (a, b) {
+              const ratingA = parseFloat(
+                $(a)
+                  .find('p:contains("평점:")')
+                  .text()
+                  .replace("평점:", "")
+                  .trim()
+              );
+              const ratingB = parseFloat(
+                $(b)
+                  .find('p:contains("평점:")')
+                  .text()
+                  .replace("평점:", "")
+                  .trim()
+              );
+              return ratingB - ratingA;
+            })
+            .appendTo("#search_results");
+        }
+      });
+    </script>
+  </body>
+</html>
